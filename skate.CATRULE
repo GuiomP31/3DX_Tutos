@@ -1,0 +1,73 @@
+/* Action créé(e) par GPAS3I3W 22/11/2023 */
+
+// déclartion des variables
+let parent(VPMReference)
+let featureBusinessType(String)
+let instanceChild(VPMInstance)
+let referenceChild(VPMReference)
+let firstChildRef(VPMReference)
+let descriptionRef(VPMReference)
+let reference(VPMReference)
+let planche(VPMReference)
+let instancePlanche(VPMInstance)
+let roulement(VPMReference)
+let instanceRoulement(VPMInstance)
+let roue(VPMReference)
+let instanceRoue(VPMInstance)
+
+let listRef(List)
+let listInstance(List)
+let listDescription(List)
+
+let i (Integer)
+let j (Integer)
+let k (Integer)
+let p(Integer)
+let r(Integer)
+let ro(Integer)
+let ref(Integer)
+
+p=1
+r=1
+ro=1
+
+parent = ThisObject
+
+Notify(" 1 ========  Displaying the APN : # ", parent.GetAttributeString ("AIRBUS_E_Identification_AirbusPartNumber"))
+Notify("")
+listInstance = ThisObject.Children
+i=1
+let pl (PLMEntity) // pour chaîne de caractère
+for i while i <=listInstance.Size()
+{
+	instanceChild = listInstance.GetItem(i)
+	Notify("Instance Child : # ", instanceChild.Name )
+	listRef = instanceChild.Children	
+	i = i + 1
+	j = 1
+	for j while j <= listRef.Size()
+	{	
+		firstChildRef = listRef.GetItem(j)
+		if(firstChildRef.HasAttribute("AIRBUS_E_Identification_AirbusPartNumber")) {
+			Notify("First Child Ref Name : # - Apn: # ", firstChildRef.Name, firstChildRef.GetAttributeString("AIRBUS_E_Identification_AirbusPartNumber"))
+			} else {
+			Notify("APN missing")	
+		}
+		
+		j= j + 1
+		
+	}
+	Notify("")
+	Notify (" 2 ========  List of children : # ",  instanceChild.Children)
+	
+	//listRef = ThisObject.Parent
+	
+}
+Notify(" 3 ======== Displaying description: # ", parent.GetAttributeString("V_description"))
+k = 1
+		for k while k <= listDescription.Size() 
+		{
+			
+			}
+
+

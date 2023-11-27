@@ -1,0 +1,267 @@
+/* Action créé(e) par AAUR6J2I 27/10/2023 */
+
+Let featureSelected (AIRBUS_E_VPMReference_LowerLevel)
+Let featureBusinessType (String)
+let listInstanceLvl0Child (List)
+let listReferenceLvl0Child (List)
+let listInstanceLvl1Child (List)
+let listInstanceLvl2Child (List)
+let listInstanceLvl3Child (List)
+let listInstanceLvl4Child (List)
+let listInstanceLvl5Child (List)
+let listInstanceLvl6Child (List)
+let listInstanceLvl7Child (List)
+let listInstanceLvl8Child (List)
+let listInstanceLvl9Child (List)
+let listInstanceLvl10Child (List)
+let listInstanceLvl11Child (List)
+let primaryType (String)
+let instanceChild (VPMInstance)
+let instanceSubChild (VPMInstance)
+let referenceLvl0Child (VPMReference)
+let referenceLvl1Child (VPMReference)
+let referenceLvl2Child (VPMReference)
+let referenceLvl3Child (VPMReference)
+let referenceLvl4Child (VPMReference)
+let referenceLvl5Child (VPMReference)
+let referenceLvl6Child (VPMReference)
+let referenceLvl7Child (VPMReference)
+let referenceLvl8Child (VPMReference)
+let referenceLvl9Child (VPMReference)
+let referenceLvl10Child (VPMReference)
+let extendedItem(VPMReference)
+let stackingItem(VPMReference)
+let seqItem(VPMReference)
+let p00Item(VPMReference)
+
+let referenceLvl0 (VPMReference)
+
+let w (Integer)
+let i (Integer)
+let j (Integer)
+let k (Integer)
+let l (Integer)
+let m (Integer)
+let n (Integer)
+let o (Integer)
+let p (Integer)
+let q (Integer)
+let r (Integer)
+let s (Integer)
+let t (Integer)
+let liststacking (List)
+let extitem (Integer)
+let stack (Integer)
+let seq (Integer)
+let seqList (List)
+let p00List(List)
+let p00(integer)
+
+p00 = 1
+seq = 1
+stack = 1
+extitem = 1
+w = 1
+i = 1
+j = 1
+k =1
+l = 1
+m = 1
+n =1
+o = 1
+p = 1
+q = 1
+r = 1
+s = 1
+t =1
+
+
+//Create xls file with data retrieved.
+
+//`Relations\Scripts VB.1\SelectFolder`.Run(SelectFolder)
+/*if SelectFolder == ""
+{
+	Message("Command aborted")
+	exit
+}*/
+
+//retrieve the path of the selected folder
+/*
+let backslash (String)
+backslash = "\ "
+backslash = backslash.Extract(0,1)
+
+let selectedPath (String)
+set selectedPath = SelectFolder + backslash + selectedConductor.Name + ".csv"
+
+//Create csv and write the headlines
+let myDoc (DTSheetType)Th
+set myDoc = CreateSheet(selectedPath)
+*/
+//Write data
+
+
+featureBusinessType = ThisObject.GetAttributeString("AIRBUS_E_BusinessType_BusinessType")
+//Notify ("1 Business Type of parent : #", featureBusinessType)
+listInstanceLvl0Child = ThisObject.Children
+Trace (1, "01 Business retrieve : # , Lenght of child list : #",featureBusinessType , listInstanceLvl0Child.Size())
+//Notify ("2 List of children : #", listInstanceLvl0Child)
+let parameterFinded (Parameter)
+set parameterFinded = ThisObject.Find("Parameter","",TRUE)
+//Trace (1,"ParameterFinded : # ",parameterFinded.Name)
+for i while i <= listInstanceLvl0Child.Size()
+{
+	w = w+1
+	//myDoc.SetCell(w,1,listInstanceLvl0Child.GetItem(i))
+	//Notify("2 _ Item liste : #",listInstanceLvl0Child.GetItem(i))
+	instanceChild = listInstanceLvl0Child.GetItem(i)
+	listReferenceLvl0Child = instanceChild.Children
+	//referenceLvl0 = listReferenceLvl0Child.GetItem(i)
+	Trace  (1 , "02 I -> Children Name : # , Children Type : # ", instanceChild.Name, instanceChild.PrimaryType.Name)
+	j = 1
+	for j while j <= listReferenceLvl0Child.Size()
+	{
+		w = w+1
+		//myDoc.SetCell(w,1,listInstanceLvl0Child.GetItem(i))
+		referenceLvl0Child = listReferenceLvl0Child.GetItem(j)
+		//Notify("3 _ _ _ RefItem liste : #",  listReferenceLvl0Child.GetItem(j))
+		listInstanceLvl1Child = referenceLvl0Child.Children
+		
+		
+		Trace  (1 , "03 I --> Children Name : # , Children Type : # ", referenceLvl0Child.Name, referenceLvl0Child.PrimaryType.Name)
+		k =1
+		for k while k <= listInstanceLvl1Child.Size()
+		{
+			w = w+1
+			//myDoc.SetCell(w,1,listInstanceLvl0Child.GetItem(i))
+			//Notify("4 _ _ _ _ Instance Item liste subChild : #",  listInstanceLvl1Child.GetItem(k))
+			referenceLvl1Child = listInstanceLvl1Child.GetItem(k)
+			listInstanceLvl2Child = referenceLvl1Child.Children
+			
+			Trace  (1 , "04 I --->Children Name : # , Children Type : # ", referenceLvl1Child.Name, referenceLvl1Child.PrimaryType.Name)
+			l = 1
+			for l while l <= listInstanceLvl2Child.Size()
+			{
+				w = w+1
+				//myDoc.SetCell(w,1,listInstanceLvl0Child.GetItem(i))
+				referenceLvl2Child = listInstanceLvl2Child.GetItem(l)
+				//Notify("5 _ _ _ _ _ Instance Item liste subSubChild : #",  listInstanceLvl2Child.GetItem(l))
+				listInstanceLvl3Child = referenceLvl2Child.Children
+				Trace  (1 , "05 I ---->Children Name : # , Children Type : # ", referenceLvl2Child.Name, referenceLvl2Child.PrimaryType.Name)
+				m = 1
+				for m while m <= listInstanceLvl3Child.Size()
+				{
+					//Notify("6 _ _ _ _ _ _ Instance Item liste subSubSubChild : #",  listInstanceLvl3Child.GetItem(m))
+					referenceLvl3Child = listInstanceLvl3Child.GetItem(m)
+					listInstanceLvl4Child = referenceLvl3Child.Children
+					Trace  (1 , "06 I ----->Children Name : # , Children Type : # ", referenceLvl3Child.Name, referenceLvl3Child.PrimaryType.Name)
+					//Notify ("4 Extended Items : #", listInstanceLvl4Child)
+					extitem = 1
+					for extitem while extitem <= listInstanceLvl4Child.Size()		
+					{	
+						extendedItem = listInstanceLvl4Child.GetItem(extitem)
+						if( extendedItem.Name == "Stacking")
+						{
+							//Notify ("6, Found Stacking")
+							
+							liststacking = extendedItem.Children
+							for stack while stack <= liststacking.Size()
+							{
+								stackingItem = liststacking.GetItem(stack)
+								if(stackingItem.Name == "Plies Group.1")
+								{
+									seqList = stackingItem.Children
+									//Notify("SEQ found")
+									seq = 1
+									for seq while seq <= seqList.Size()
+									{
+										seqItem = seqList.GetItem(seq)
+										Notify("7, SEQ: #", seqItem.Name)
+										p00List = seqItem.Children
+										p00 = 1
+										for p00 while p00 <= p00List.Size()
+										{
+											p00Item = p00List.GetItem(p00)
+											Notify("8, P00:#", p00Item.Name)
+										}
+										
+									}							
+								}
+							}
+						}
+					}
+					n = 1
+					for n while n <= listInstanceLvl4Child.Size()
+					{
+						//Notify("7 _ _ _ _ _ _ _ Instance Item liste subSubSubChild : #",  listInstanceLvl4Child.GetItem(n))
+						referenceLvl4Child = listInstanceLvl4Child.GetItem(n)
+						listInstanceLvl5Child = referenceLvl4Child.Children
+						Trace  (1 , "07 I ------>Children Name : # , Children Type : # ", referenceLvl4Child.Name, referenceLvl4Child.PrimaryType.Name)	
+						extitem = 1
+						o = 1
+						for o while o <= listInstanceLvl5Child.Size()
+						{
+							//Notify("8 _ _ _ _ _ _ _ _ Instance Item liste subSubSubChild : #",  listInstanceLvl5Child.GetItem(o))
+							referenceLvl5Child = listInstanceLvl5Child.GetItem(o)
+							listInstanceLvl6Child = referenceLvl5Child.Children
+							Trace  (1 , "08 I ------->Children Name : # , Children Type : # ", referenceLvl5Child.Name, referenceLvl5Child.PrimaryType.Name)
+							p = 1
+							for p while p <= listInstanceLvl6Child.Size()
+							{
+								//Notify("9 _ _ _ _ _ _ _ _ _ Instance Item liste subSubSubChild : #",  listInstanceLvl6Child.GetItem(p))
+								referenceLvl6Child = listInstanceLvl6Child.GetItem(p)
+								listInstanceLvl7Child = referenceLvl6Child.Children
+								//Notify ("09 _ _ _ _ _ _ _ _ _ Instance Item liste subSubSubChild : # , Lenght of SubSubChild list : #, type : #", listInstanceLvl6Child.GetItem(p) , listInstanceLvl7Child.Size(),referenceLvl6Child.PrimaryType.Name)
+								Trace  (1 , "09 I -------->Children Name : # , Children Type : # ", referenceLvl6Child.Name, referenceLvl6Child.PrimaryType.Name )
+								q = 1
+								for q while q <= listInstanceLvl7Child.Size()
+								{
+									//Notify("10 _ _ _ _ _ _ _ _ _ _ Instance Item liste subSubSubChild : #",  listInstanceLvl7Child.GetItem(q))
+									referenceLvl7Child = listInstanceLvl7Child.GetItem(q)
+									listInstanceLvl8Child = referenceLvl7Child.Children
+									//Notify ("10 _ _ _ _ _ _ _ _ _ _ Instance Item liste subSubSubChild : # , Lenght of SubSubChild list : #, type : #", listInstanceLvl7Child.GetItem(q) , listInstanceLvl8Child.Size(),referenceLvl7Child.PrimaryType.Name)
+									Trace  (1 , "10 I --------->Children Name : # , Children Type : # ", referenceLvl7Child.Name, referenceLvl7Child.PrimaryType.Name )
+									r =1
+									for r while r <= listInstanceLvl8Child.Size()
+									{
+										//Notify("11 _ _ _ _ _ _ _ _ _ _ _ Instance Item liste subSubSubChild : #",  listInstanceLvl8Child.GetItem(r))
+										referenceLvl8Child = listInstanceLvl8Child.GetItem(r)
+										listInstanceLvl9Child = referenceLvl8Child.Children
+										//Notify ("11 _ _ _ _ _ _ _ _ _ _ _ Instance Item liste subSubSubChild : # , Lenght of SubSubChild list : #, type : #", listInstanceLvl8Child.GetItem(r) ,  listInstanceLvl9Child.Size(),referenceLvl8Child.PrimaryType.Name)
+										Trace  (1 , "11 I ---------->Children Name : # , Children Type : # ", referenceLvl8Child.Name, referenceLvl8Child.PrimaryType.Name )
+										s =1
+										for s while s<= listInstanceLvl9Child.Size()
+										{
+											//Notify("12 _ _ _ _ _ _ _ _ _ _ _ _ _ Instance Item liste subSubSubChild : #",  listInstanceLvl9Child.GetItem(s))
+											referenceLvl9Child = listInstanceLvl9Child.GetItem(s)
+											listInstanceLvl10Child = referenceLvl9Child.Children
+											//Notify ("12 _ _ _ _ _ _ _ _ _ _ _ _ _ Instance Item liste subSubSubChild : # , Lenght of SubSubChild list : #, type : #", listInstanceLvl9Child.GetItem(s) , listInstanceLvl10Child.Size(),referenceLvl9Child.PrimaryType.Name, referenceLvl9Child.Name)
+											//Notify ("12 _ _ _ _ _ _ _ _ _ _ _ _ _ instanceChildName : # ", referenceLvl9Child.Name)
+											Trace  (1 , "12 I ----------->Children Name : # , Children Type : # ", referenceLvl9Child.Name, referenceLvl9Child.PrimaryType.Name )
+											for t while t <= listInstanceLvl10Child.Size()
+											{
+												referenceLvl10Child = listInstanceLvl10Child.GetItem(t)
+												listInstanceLvl11Child = referenceLvl10Child.Children
+												if listInstanceLvl11Child.Size() <> 0
+												{
+													Trace  (1 , "13 I ------------>Children Name : # , Children Type : # ", referenceLvl10Child.Name, referenceLvl10Child.PrimaryType.Name)
+												}
+												else
+												{
+													Trace  (1 , "Y a rien la ")
+												}
+												
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//End
