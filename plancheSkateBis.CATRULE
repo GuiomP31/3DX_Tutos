@@ -1,0 +1,114 @@
+
+/* Action créé(e) par GPAS3I3W 22/11/2023 */
+
+// Début déclartion des variables
+let parent(VPMReference)
+let featureBusinessType(String)
+let instanceChild(VPMInstance)
+let referenceChild(VPMReference)
+let firstChildRef(VPMReference)
+let descriptionRef(VPMReference)
+let reference(VPMReference)
+let planche(VPMReference)
+let instancePlanche(VPMInstance)
+let roulement(VPMReference)
+let instanceRoulement(VPMInstance)
+let roue(VPMReference)
+let instanceRoue(VPMInstance)
+
+let listRef(List)
+let listInstance(List)
+let listDescription(List)
+
+let i (Integer)
+let j (Integer)
+let k (Integer)
+let l (Integer)
+let m (Integer)
+let p(Integer)
+let r(Integer)
+let ro(Integer)
+let ref(Integer)
+// Fin déclaration des variables
+
+parent = ThisObject
+
+Notify(" 1 ======== Displaying the APN : # ", parent.GetAttributeString ("AIRBUS_E_Identification_AirbusPartNumber"))
+Notify(" 2 ======== Displaying the English Title : # ", parent.GetAttributeString ("AIRBUS_E_Identification_EnglishTitle"))
+Notify(" 3 ======== Displaying the Business Type: # ", parent.GetAttributeString ("AIRBUS_E_BusinessType_BusinessType"))
+Notify("")
+listInstance = ThisObject.Children
+i=1
+let pl (PLMEntity) // pour chaîne de caractère
+for i while i <=listInstance.Size()
+{
+	instanceChild = listInstance.GetItem(i)
+	Notify("Instance Child : # ", instanceChild.Name )
+	listRef = instanceChild.Children	
+	i = i + 1
+	j = 1
+	for j while j <= listRef.Size()
+	{	
+		firstChildRef = listRef.GetItem(j)
+		if(firstChildRef.HasAttribute("AIRBUS_E_Identification_AirbusPartNumber")) {
+			Notify("First Child Ref Name : # - Apn: # ", firstChildRef.Name, firstChildRef.GetAttributeString("AIRBUS_E_Identification_AirbusPartNumber"))
+			} else {
+			Notify("APN is missing")	
+		}
+		
+		j= j + 1
+		k = 1
+		
+		for k while k <= listRef.Size()
+		{	
+			firstChildRef = listRef.GetItem(k)
+			if(firstChildRef.HasAttribute("AIRBUS_E_BusinessType_BusinessType"))
+			{
+				if (firstChildRef.GetAttributeString("AIRBUS_E_BusinessType_BusinessType") == "Storable Assembly")
+				{
+					firstChildRef.SetAttributeString("V_description"," Je suis un Storable Assembly.")
+				}
+				
+			}
+			k= k + 1
+			
+		}	
+	}
+	l = 1
+	for l while l <= listRef.Size()
+	{	
+		firstChildRef = listRef.GetItem(l)
+		if(firstChildRef.HasAttribute("AIRBUS_E_BusinessType_BusinessType"))
+		{
+			if (firstChildRef.GetAttributeString("AIRBUS_E_BusinessType_BusinessType") == "Project Definition")
+			{
+				firstChildRef.SetAttributeString("V_description"," Je suis un Project Definition.")
+			}
+			l= l + 1	
+		}
+		//Notify (" 4 ======== List of children : # ",  instanceChild.Children)	
+	}
+	
+	m = 1
+	for m while m <= listRef.Size()
+	{	
+		firstChildRef = listRef.GetItem(m)
+		if(firstChildRef.HasAttribute("AIRBUS_E_BusinessType_BusinessType"))
+		{
+			if (firstChildRef.GetAttributeString("AIRBUS_E_BusinessType_BusinessType") == "EHI")
+			{
+				firstChildRef.SetAttributeString("V_description","C'est quoi un EHI ? ")
+				
+			}
+			m= m + 1
+			Notify(" 5 ======== Displaying description : # ", parent.GetAttributeString("V_description"))	
+			
+		}
+		
+	}
+	
+	
+}
+Notify("")
+//Notify(" 5 ======== Displaying description : # ", parent.GetAttributeString("V_description"))
+

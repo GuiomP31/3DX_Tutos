@@ -1,3 +1,5 @@
+
+
 Exos entrainement EKL-Library pour prise en main de 3DEXPERIENCE | CATIA
 Eurodrone_Design
 
@@ -29,5 +31,3 @@ Eurodrone_Design
      - Parcourir la Product Structure et mettre à jour la description si l'objet est un SA.
 
      - SA => ADS_StorableAssembly_CPT
-
-     
