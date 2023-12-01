@@ -1,3 +1,16 @@
+
+
+
+![image](https://github.com/GuiomP31/3DX_Tutos/assets/101930653/326f17d1-946b-4309-8b82-f6b493b40142)
+
+
+
+
+![image-1](https://github.com/GuiomP31/3DX_Tutos/assets/101930653/0bfc9fd6-4baf-4348-a4d0-a5b3eeb343bc)
+
+
+
+
 Exos entrainement EKL-Library pour prise en main de 3DEXPERIENCE | CATIA
 Eurodrone_Design
 
